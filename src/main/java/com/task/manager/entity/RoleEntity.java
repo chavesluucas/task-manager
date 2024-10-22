@@ -1,7 +1,11 @@
 package com.task.manager.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.task.manager.permissions.RoleEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,16 +23,18 @@ import java.util.List;
 @Data
 @Getter
 @Setter
-public class Role implements Serializable {
+public class RoleEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(unique = true, length = 40)
-    private String name;
+    @Column
+    @Enumerated(EnumType.STRING)
+    private RoleEnum name;
 
     @ManyToMany(mappedBy = "roles")
-    private List<User> users;
+    @JsonBackReference
+    private List<UserEntity> users;
 
 }

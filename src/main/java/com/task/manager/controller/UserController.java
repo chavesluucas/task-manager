@@ -1,6 +1,6 @@
 package com.task.manager.controller;
 
-import com.task.manager.entity.User;
+import com.task.manager.entity.UserEntity;
 import com.task.manager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,28 +17,26 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> saveUser(@RequestBody User user) {
-        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
+    public ResponseEntity<String> saveUser(@RequestBody UserEntity user) {
+        UserEntity userSave = userService.saveUser(user);
+
+        return new ResponseEntity<>("New user created " + userSave.getUsername(), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
-        User updateUser = userService.updateUser(user);
+    public ResponseEntity<String> updateUser(@RequestBody UserEntity user) {
+        UserEntity updateUser = userService.updateUser(user);
 
-        if (updateUser == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-
-        return new ResponseEntity<>(updateUser, HttpStatus.OK);
+        return new ResponseEntity<>(updateUser.getUsername() + " user successfully updated", HttpStatus.OK);
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAll() {
+    public ResponseEntity<List<UserEntity>> getAll() {
         return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
     }
 
     @DeleteMapping
-    public void deleteUser(@RequestBody User user) {
+    public void deleteUser(@RequestBody UserEntity user) {
         userService.deleteUser(user.getId());
     }
 

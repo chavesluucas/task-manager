@@ -24,7 +24,7 @@ import java.util.List;
 @Data
 @Getter
 @Setter
-public class User implements Serializable {
+public class UserEntity implements Serializable {
 
     private static final long serialVersionUUID = 1L;
 
@@ -35,13 +35,13 @@ public class User implements Serializable {
     @Column(unique = true, length = 50)
     private String username;
 
-    @Column(length = 50)
+    @Column(length = 150)
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name="role_id"),
             uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "role_id"}))
-    private List<Role> roles;
+    private List<RoleEntity> roles;
 
 }
