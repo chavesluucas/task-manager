@@ -39,11 +39,11 @@ public class TaskManagerApplication implements CommandLineRunner {
 		RoleEntity roleAdmin = new RoleEntity();
 		roleAdmin.setName(RoleEnum.ADMIN);
 
-		RoleEntity roleUsuario = new RoleEntity();
-		roleUsuario.setName(RoleEnum.USER);
+		RoleEntity userRole = new RoleEntity();
+		userRole.setName(RoleEnum.USER);
 
 		roles.add(roleAdmin);
-		roles.add(roleUsuario);
+		roles.add(userRole);
 
 		user.setRoles(roles);
 

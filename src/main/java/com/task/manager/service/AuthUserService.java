@@ -3,6 +3,9 @@ package com.task.manager.service;
 import com.task.manager.entity.UserEntity;
 import com.task.manager.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import lombok.AccessLevel;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -16,10 +19,11 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Setter(onMethod_ = @Autowired)
 public class AuthUserService implements UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

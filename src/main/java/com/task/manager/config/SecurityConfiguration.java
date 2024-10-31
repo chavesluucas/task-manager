@@ -45,6 +45,7 @@ public class SecurityConfiguration {
                     .requestMatchers(HttpMethod.GET, "/welcome-test").hasAuthority(RoleEnum.ADMIN.toString())
                     .requestMatchers(HttpMethod.GET, "/user").hasAuthority(RoleEnum.USER.toString())
                     .requestMatchers(HttpMethod.POST, "/user").hasAuthority(RoleEnum.ADMIN.toString())
+                    .requestMatchers(HttpMethod.POST, "/task-manager").hasAuthority(RoleEnum.ADMIN.toString())
                     .anyRequest()
                     .authenticated();
         });

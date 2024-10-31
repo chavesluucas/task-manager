@@ -5,6 +5,10 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.AccessLevel;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,15 +23,16 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class AuthenticationService {
 
-    private static final int EXPIRATION_TOKEN_ONE_HOUR = 3600000;
-    private static final String HEADER_AUTHORIZATION = "Authorization";
-    private static final String JWT_KEY = "signinKey";
-    private static final String BEARER = "Bearer ";
-    private static final String AUTHORITIES = "authorities";
-    private static final String ACCESS_CONTROL = "Access-Control-Expose-Headers";
-    private static final String AUTH_FAILED = "Authentication failed";
+    static final int EXPIRATION_TOKEN_ONE_HOUR = 3600000;
+    static final String HEADER_AUTHORIZATION = "Authorization";
+    static final String JWT_KEY = "signinKey";
+    static final String BEARER = "Bearer ";
+    static final String AUTHORITIES = "authorities";
+    static final String ACCESS_CONTROL = "Access-Control-Expose-Headers";
+    static final String AUTH_FAILED = "Authentication failed";
 
     static public void addJWTToken(HttpServletResponse response, Authentication authentication) {
         Map<String, Object> claims = new HashMap<>();
