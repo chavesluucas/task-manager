@@ -41,7 +41,7 @@ public class TaskManagerService {
     }
 
     public Page<TaskEntity> getTaskByTitle(String title, Pageable pageable) {
-        return this.taskManagerRepository.findByTitleContaining(title,pageable);
+        return this.taskManagerRepository.findByTitleContainingOrderByUpdateDateDesc(title,pageable);
     }
 
     public Page<TaskEntity> getAllTasks(Pageable pageable) {

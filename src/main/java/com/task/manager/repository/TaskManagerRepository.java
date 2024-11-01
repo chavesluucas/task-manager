@@ -11,8 +11,8 @@ public interface TaskManagerRepository extends JpaRepository<TaskEntity, Long> {
 
     TaskEntity findByTitleOrDescription(String title, String description);
 
-    Page<TaskEntity> findByTitleContaining(String title, Pageable pageable);
+    Page<TaskEntity> findByTitleContainingOrderByUpdateDateDesc(String title, Pageable pageable);
 
-    Page<TaskEntity> findAll(Pageable pageable);
+    Page<TaskEntity> findAllByOrderByOrderByUpdateDateDesc(Pageable pageable);
 
 }
