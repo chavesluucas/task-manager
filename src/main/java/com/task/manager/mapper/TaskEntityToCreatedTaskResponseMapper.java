@@ -13,6 +13,7 @@ public class TaskEntityToCreatedTaskResponseMapper {
                 .title(task.getTitle())
                 .description(task.getDescription())
                 .author(task.getAuthor().getUsername())
+                .estimatedHours(task.getEstimatedHours())
                 .build();
     }
 

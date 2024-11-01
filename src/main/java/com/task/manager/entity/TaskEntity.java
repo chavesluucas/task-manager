@@ -19,6 +19,22 @@ public class TaskEntity implements Serializable {
 
     private static final long serialVersionUUID = 1L;
 
+    public TaskEntity() {
+    }
+
+    public TaskEntity(Long id, String title, String description, StatusEnum status, UserEntity assigned, UserEntity author, int estimatedHours, Integer leadTime, LocalDate createdDate, LocalDate updatedDate) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.assigned = assigned;
+        this.author = author;
+        this.estimatedHours = estimatedHours;
+        this.leadTime = leadTime;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;

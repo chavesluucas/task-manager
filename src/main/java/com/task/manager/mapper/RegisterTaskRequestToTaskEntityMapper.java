@@ -1,7 +1,7 @@
 package com.task.manager.mapper;
 
 import com.task.manager.entity.TaskEntity;
-import com.task.manager.request.RegisterTaskRequest;
+import com.task.manager.request.CreatedTaskRequest;
 import com.task.manager.service.UserService;
 import com.task.manager.status.StatusEnum;
 import lombok.AccessLevel;
@@ -17,7 +17,7 @@ public class RegisterTaskRequestToTaskEntityMapper {
 
     UserService userService;
 
-    public TaskEntity toEntity(RegisterTaskRequest request, StatusEnum status) {
+    public TaskEntity toEntity(CreatedTaskRequest request, StatusEnum status) {
         return TaskEntity.builder()
                 .title(request.getTitle())
                 .description(request.getDescription())

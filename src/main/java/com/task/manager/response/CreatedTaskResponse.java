@@ -16,5 +16,6 @@ public class CreatedTaskResponse {
     String title;
     String description;
     String author;
+    Integer estimatedHours;
 
 }

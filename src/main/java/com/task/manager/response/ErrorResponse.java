@@ -6,18 +6,16 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+import java.util.Map;
+
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
 @Builder
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class UpdateTaskResponse {
+public class ErrorResponse {
 
-    Long id;
-    String title;
-    String description;
-    String assignedName;
-    Integer leadTime;
-    int estimatedHours;
     String status;
+    List<Map<String, String>> errors;
 
 }
