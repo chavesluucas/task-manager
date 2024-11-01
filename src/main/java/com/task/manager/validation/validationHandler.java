@@ -25,8 +25,8 @@ public class validationHandler {
                 .stream()
                 .map(error -> {
                     Map<String, String> errors = new HashMap<>();
-                    errors.put("Campo", getPropertyName(error));
-                    errors.put("Descrição", error.getDefaultMessage());
+                    errors.put("Field", getPropertyName(error));
+                    errors.put("Description", error.getDefaultMessage());
 
                     return errors;
                 }).toList();

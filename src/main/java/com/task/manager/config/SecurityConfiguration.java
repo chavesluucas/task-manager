@@ -41,8 +41,6 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(crsf -> crsf.disable()).authorizeHttpRequests(auth -> {
             auth.requestMatchers("/login").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/api-test").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/welcome-test").hasAuthority(RoleEnum.ADMIN.toString())
                     .requestMatchers(HttpMethod.GET, "/user").hasAuthority(RoleEnum.USER.toString())
                     .requestMatchers(HttpMethod.POST, "/user").hasAuthority(RoleEnum.ADMIN.toString())
                     .requestMatchers(HttpMethod.POST, "/task-manager").hasAuthority(RoleEnum.ADMIN.toString())
